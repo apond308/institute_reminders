@@ -7,10 +7,8 @@ def BadConfig():
     print("Bad config file.")
     exit(0)
 
-def RemindSetup(member_list):
-    numbers = []
-    for member in member_list:
-        numbers.append("+1" + member.phone_number)
+def RemindSetup(member):
+    number = "+1" + member.phone_number
     message = (
         "Hi " + member.first_name + ", "
         "this is your reminder that you're scheduled to help set up for institute "
@@ -18,14 +16,14 @@ def RemindSetup(member_list):
         "If you can't make it, make sure and find someone to replace you! "
         "Thanks!"
     )
-    sns.sendText(numbers, message)
+    sns.sendText([number], message)
 
 def RemindFacebook(member):
     number = "+1" + member.phone_number
     message = (
-        "Hi " + member.first_name + "! "
-        "This is your reminder that you're scheduled to post the institute "
-        "reminder on Facebook this week!"
+        "Hi " + member.first_name + ", "
+        "this is your reminder that you're scheduled to post the institute "
+        "reminder on Facebook this week. Thanks for your help!"
     )
     sns.sendText([number], message)
 
@@ -57,6 +55,7 @@ week_number = (day_of_month - 1) // 7 + 1
 line = config_file.readline()
 while(("Week " + str(week_number)) not in line):
     line = config_file.readline()
+
 line = config_file.readline()
 if ("Setup" not in line):
     BadConfig()
@@ -64,8 +63,7 @@ names = line.split(":")[1]
 setup_list = []
 for member in committee_members:
     if (member.full_name in names):
-        setup_list.append(member)
-RemindSetup(setup_list)
+        RemindSetup(member)
 
 line = config_file.readline()
 if ("Facebook" not in line):
