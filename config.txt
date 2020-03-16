@@ -11,29 +11,17 @@ Schedule
 ########
 
 Week 1
-Gwen Brockbank,Andrew Pond
+Setup: Gwen Brockbank,Andrew Pond
+Facebook: Jess Tobler
 
 Week 2
-Meg Wood,Jess Tobler
+Setup: Meg Wood,Jess Tobler
+Facebook: Gwen Brockbank
 
 Week 3
-Gwen Brockbank,n/a
+Setup:Gwen Brockbank,n/a
+Facebook: Andrew Pond
 
 Week 4
-Andrew Pond,n/a
-
-
-Facebook Reminders
-##################
-
-Week 1
-Andrew Pond
-
-Week 2
-Joseph Geilman
-
-Week 3
-Meg Wood
-
-Week 4
-Gwen Brockbank
+Setup: Andrew Pond,n/a
+Facebook: Meg Wood
