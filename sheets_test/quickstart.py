@@ -1,16 +1,38 @@
 from __future__ import print_function
 import pickle
 import os.path
+
+# pip install --upgrade google-api-python-client
+# pip install google-auth-oauthlib
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
+
+import CommitteeMember
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
-SAMPLE_SPREADSHEET_ID = '1aXIUgMAJqnyBhfW9VIKtu0XCmYztLFHwlVg5X2NGSBk'
-SAMPLE_RANGE_NAME = 'MASTER - Callings!A:E'
+SAMPLE_SPREADSHEET_ID = '1-qWpbmCQpEXwN9bP0KoQmMJ4zVY5mkqeaA-oxB4j1I8'
+SAMPLE_RANGE_NAME = 'Schedule!A1:H10'
+
+def getCommitteeData(values):
+    index = 1
+    while (index < len(values) and len(values[index]) > 0):
+        print("\n")
+        print(values[index])
+        full_name = values[index][0]
+
+        phone_number = values[index][1]
+        print("pre strip: " + phone_number)
+        characters_to_remove = "()- "
+        for character in characters_to_remove:
+            phone_number = phone_number.replace(character, "")
+        print("after strip: " + phone_number)
+        # member = CommitteeMember()
+        index += 1
+
 
 def main():
     """Shows basic usage of the Sheets API.
@@ -46,10 +68,7 @@ def main():
     if not values:
         print('No data found.')
     else:
-        index = 0
-        while (len(values[index]) < 2 or values[index][1] != "Institute Committee"):
-            index += 1
-        print(index)
+        getCommitteeData(values)
 
 if __name__ == '__main__':
     main()

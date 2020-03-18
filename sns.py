@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = "https://5q19qjn2qe.execute-api.us-west-2.amazonaws.com/SNS_Sender"
+url = "https://3u42tnm3ll.execute-api.us-west-2.amazonaws.com/SNS_Sender"
 
 def sendText(recipients, message):
     payload = {"numbers": [], "message": message}
